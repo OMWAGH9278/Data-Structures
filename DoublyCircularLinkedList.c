@@ -24,17 +24,16 @@ void InsertFirst(PPNODE First, PPNODE Last, int no)
     if((*First == NULL) && (*Last == NULL))
     {
         *First = *Last = newn;
-        (*Last)->next = *First;
-        (*First)->prev = *Last;
     }
     else
     {
         (*First)->prev = newn;
         newn->next = *First;
         *First = newn;
-        (*First)->prev = *Last;
-        (*Last)->next = *First;
     }
+
+    (*Last)->next = *First;
+    (*First)->prev = *Last;
 }
 
 void InsertLast(PPNODE First, PPNODE Last, int no)
@@ -48,17 +47,16 @@ void InsertLast(PPNODE First, PPNODE Last, int no)
     if((*First == NULL) && (*Last == NULL))
     {
         *First = *Last = newn;
-        (*Last)->next = *First;
-        (*First)->prev = *Last;
     }
     else
     {
         (*Last)->next = newn;
         newn->prev = *Last;
         *Last = newn;
-        (*First)->prev = *Last;
-        (*Last)->next = *First;
     }
+    
+    (*First)->prev = *Last;
+    (*Last)->next = *First;
 }
 
 void DeleteFirst(PPNODE First, PPNODE Last)
